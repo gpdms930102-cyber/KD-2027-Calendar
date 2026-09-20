@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="12 Elements of Comfort — 경동의 기술이 만들어가는 더 나은 생활환경. KD 2027 Calendar.">
+  <title>KD 2027 CALENDAR</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css?v=20260920-6">
+  <script src="data.js?v=20260920-6" defer></script>
+  <script src="app.js?v=20260920-6" defer></script>
+  <script src="card-data.js?v=20260920-6" defer></script>
+  <script src="cards.js?v=20260920-6" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <button id="brand" class="brand" aria-label="캘린더 표지로 이동"><img src="assets/kd-symbol.svg" alt="KyungDong" width="44" height="33"><span>2027 CALENDAR</span></button>
+    <span class="edition">Optimizing Around You</span>
+    <button id="info" class="icon-button" aria-label="캘린더 콘셉트 보기"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7v.5"/></svg></button>
+  </header>
+  <main class="app">
+    <section class="visual" aria-label="캘린더 모션 아트워크">
+      <div class="video-frame">
+        <video id="heroVideo" muted playsinline loop preload="metadata" aria-label="2027 경동 캘린더 모션"></video>
+        <div class="video-tools"><button id="play" class="play-button" aria-label="영상 일시정지"><span id="playIcon" aria-hidden="true">Ⅱ</span><span id="playText">일시정지</span></button></div>
+        <div id="mediaError" class="media-error" role="status" hidden>영상을 불러오지 못했습니다.<button id="retry">다시 시도</button></div>
+      </div>
+    </section>
+    <section class="control-panel" aria-label="캘린더 탐색">
+      <div id="coverUI" class="cover-content">
+        <p class="eyebrow">KD 2027 CALENDAR</p>
+        <h1>12 Elements<br>of Comfort<span class="title-dot">.</span></h1>
+        <p class="cover-lead">더 나은 일상을 만드는<br>열두 가지 시각 언어.</p>
+        <p class="body-copy">경동의 기술이 만들어가는 더 나은 생활환경을 12개의 시각 언어로 경험해보세요.</p>
+        <button id="enter" class="primary-button">2027 캘린더 보기 <span aria-hidden="true">↗</span></button>
+        <p class="cover-note">기술을 통해 사람을 둘러싼 생활환경이 더 나은 일상으로 최적화되는 과정을 표현합니다.</p>
+      </div>
+      <div id="monthUI" class="month-content" hidden>
+        <div class="month-heading" aria-live="polite" aria-atomic="true">
+          <div class="meta"><p id="monthLabel" class="eyebrow"></p><span id="counter" class="counter"></span></div>
+          <h1 id="keyword"></h1><p id="korean" class="korean"></p>
+        </div>
+
+        <div class="concept"><p class="eyebrow">VISUAL ELEMENTS</p><div id="elementRow" class="element-row"></div><p id="conceptCopy" class="body-copy"></p></div>
+        <div id="house" class="house" hidden><p>더 나은 일상, 계속되는 이야기.</p><a class="primary-button" href="https://www.navienhouse.com/" target="_blank" rel="noopener noreferrer">나비엔 하우스 바로가기 <span aria-hidden="true">↗</span><span class="sr-only"> (새 창)</span></a></div>
+      </div>
+        <nav class="month-navigation" aria-label="월 선택">
+          <div class="navigation-label"><span>2027</span><span>MONTH</span></div>
+          <div class="controls">
+            <button id="prev" class="nav-button" aria-label="이전 달"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>
+            <div id="monthStrip" class="month-strip"></div>
+            <button id="next" class="nav-button" aria-label="다음 달"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button>
+          </div>
+        </nav>
+      <button id="openCard" class="card-open-button">메시지 카드 만들기 <span aria-hidden="true">↗</span></button>
+      <footer class="panel-footer"><span>KyungDong</span><span>2027</span></footer>
+    </section>
+  </main>
+  <dialog id="infoDialog" aria-labelledby="sheetTitle"><button id="closeSheet" class="icon-button close" aria-label="닫기">×</button><p class="eyebrow">12 ELEMENTS OF COMFORT</p><h2 id="sheetTitle"></h2><p id="sheetText" class="body-copy"></p></dialog>
+  <dialog id="cardDialog" class="card-dialog" aria-labelledby="cardTitle">
+    <header class="card-dialog-header"><div><p class="eyebrow" id="cardEdition">2027</p><h2 id="cardTitle">마음을 전하는 한 장</h2></div><button id="closeCard" class="icon-button" aria-label="메시지 카드 닫기">×</button></header>
+    <div class="card-workspace">
+      <div class="card-preview"><canvas id="cardCanvas" width="737" height="1078" role="img" aria-label="메시지 카드 미리보기"></canvas><p>737 × 1078 px · PNG</p></div>
+      <div class="card-editor"><label for="cardMessage">전하고 싶은 메시지</label><textarea id="cardMessage" rows="8" aria-describedby="cardCount cardHelp" placeholder="소중한 사람에게 전하고 싶은 마음을 적어주세요."></textarea><div id="cardCount" class="card-count" aria-live="polite">0 / 200</div><p id="cardHelp">최대 200자 · Pretendard<br>글 길이에 맞춰 크기와 줄바꿈이 자동으로 조정됩니다.</p><a id="downloadCard" class="primary-button" aria-disabled="true" download>PNG 다운로드 <span aria-hidden="true">↓</span></a><p id="cardStatus" role="status" aria-live="polite"></p></div>
+    </div>
+  </dialog>
+  <noscript><p class="noscript">월별 캘린더를 보려면 브라우저에서 JavaScript를 활성화해주세요.</p></noscript>
+</body>
+</html>
